@@ -1,0 +1,34 @@
+---
+title: 'Avoiding Zombie Hot Zones'
+output: html_document
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Updated: April 27, 2017
+After the inital zombie outbreak in November 2016, avoiding the hordes is crucial
+to the survival of North Americans. The map belows shows the most up-to-date information
+that authorities have about the location of large groups of the brain-eating creatures. Adequate safety shelters have been setup and are labeled as "SAFE ZONES."
+
+```{r, echo=FALSE,warning=FALSE}
+suppressPackageStartupMessages(library(leaflet))
+set.seed(315)
+df<-data.frame(lat =runif(100,31,49),lng=runif(100,-119,-80))
+#df<-data.frame(lat=c(40.7128,34.0522,32.9423) , lng=c(-74.0059,-118.2437,-84.3842))
+zombieIcon <- makeIcon(
+  iconUrl = "http://orig12.deviantart.net/ab97/f/2014/163/e/a/zombie_smile_by_antixi-d7m3x86.png",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+df %>%
+        leaflet() %>% 
+        addTiles() %>%
+        addMarkers(icon=zombieIcon,clusterOptions = markerClusterOptions()) %>%
+        addCircles(lat=c(42.1234,51.1284,53.2348,29.5431),
+                   lng=c(-95.2345,-110.3324,-84.4454,-96.4453),
+                   weight = 1, 
+                   radius = 50000,label = "SAFE ZONE",
+                   color="darkblue",fill="lightblue")
+```

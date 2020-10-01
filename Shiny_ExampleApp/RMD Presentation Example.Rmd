@@ -1,0 +1,53 @@
+---
+title: "Presentation Example"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##My new slide
+Some content
+
+*** 
+A slide without a title
+
+## My title
+
+### A top level subheading
+
+#### A second level subheading
+
+
+##Title
+
+- Bullet a
+- Bullet b
+
+1. Item a
+2. Item b
+
+
+## New slide
+
+Plain text
+
+*italicized text*
+
+**Bold text**
+
+`for (in %in% 1:10)`
+
+
+## Next Slide
+```{r, comment=""}
+#Note: this eliminates the comment characters
+head(mtcars)
+```
+
+## My new slide
+```{r, echo=FALSE}
+plot(mtcars$wt,mtcars$mpg,xlab="Weight",ylab="MPG")
+```
+
